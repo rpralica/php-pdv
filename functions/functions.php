@@ -4,15 +4,11 @@ function e($value)
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
-function validate($errors, $field) //Validation errors
-{
-    if (isset($errors[$field]) && !empty($errors[$field])) {
-        echo '<div class="alert alert-danger text-center fw-bold alert-dismissible fade show" role="alert">';
-        echo htmlspecialchars($errors[$field], ENT_QUOTES);
-        echo '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-        echo '</div>';
-    }
-}
+
+
+
+
+
 
 function redirect($url) //Redirect 
 {
@@ -23,6 +19,36 @@ function redirect($url) //Redirect
 function sanitizeData($val) //Sanitize and cast to string
 {
     return isset($_POST[$val]) ? htmlspecialchars((string) $_POST[$val]) : '';
+}
+
+// Funkcija za validaciju grešaka
+function validate($errors, $field)
+{
+    if (isset($errors[$field]) && !empty($errors[$field])) {
+        return '<div class="alert alert-danger text-center fw-bold alert-dismissible fade show" role="alert">' .
+            htmlspecialchars($errors[$field], ENT_QUOTES) .
+            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' .
+            '</div>';
+    }
+    return ''; // Ako nema greške, vraća praznu vrednost
+}
+
+function calcMinus($vrijednost, $postotak)
+{
+    $pdv = $vrijednost / (1 + ($postotak / 100));
+    $pdv = round($pdv, 2);
+    $iznosBezPdv = $vrijednost - $pdv;
+    $iznosBezPdv = round($iznosBezPdv, 2);
+    return [$iznosBezPdv, $pdv];
+}
+
+function calcPlus($vrijednost, $postotak)
+{
+    $pdv = $vrijednost * (($postotak / 100));
+    $pdv = round($pdv, 2);
+    $iznosSaPdv = $vrijednost + $pdv;
+    $iznosSaPdv = round($iznosSaPdv, 2);
+    return [$iznosSaPdv, $pdv];
 }
 
 function sanitizeAndValidate($val, $type = 'string')
