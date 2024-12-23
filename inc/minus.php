@@ -22,11 +22,12 @@ if (isset($_POST['calcMinus'])) {
 
 ?>
 
-<?php echo validate($errors, 'minusVrijednost'); ?>
-<?php echo validate($errors, 'minusPostotak'); ?>
+
 
 <div class="col-6 bg-info border border-3 border-white"> <!--   Minus -->
     <div class="row">
+        <?php echo validate($errors, 'minusVrijednost'); ?>
+        <?php echo validate($errors, 'minusPostotak'); ?>
         <h3 class="text-center">Oduzmi PDV</h3>
         <div class="col-3">
             <input name="minusVrijednost" value="<?php echo $minusVrijednost ?>" class="form-control " type="text" style="font-size: 1.3em;" placeholder="Iznos">

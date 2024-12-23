@@ -1,4 +1,5 @@
 <?php
+$plusVrijednost= $_POST['plusVrijednost'];
 $plusVrijednost = $plusPostotak = $tdSaPdv = $tdIznosSaPdv = '';
 $errors = ['plusVrijednost' => '', 'plusPostotak' => '', 'tdSaPdv' => '', 'tdIznosSaPdv' => ''];
 if (isset($_POST['calcPlus'])) {
@@ -16,12 +17,14 @@ if (isset($_POST['calcPlus'])) {
 }
 ?>
 
-<?php echo validate($errors, 'plusVrijednost'); ?>
-<?php echo validate($errors, 'plusPostotak'); ?>
+
 
 <div class="col-6 bg-danger  border border-3 border-white"> <!--   Plus -->
 
     <div class="row">
+        <?php echo validate($errors, 'plusVrijednost'); ?>
+        <?php echo validate($errors, 'plusPostotak'); ?>
+        <br><br><br>
         <h3 class="text-center text-white">Dodaj PDV</h3>
         <div class="col-3">
             <input name="plusVrijednost" class="form-control " value="<?php echo $plusVrijednost ?>" type="text" style="font-size: 1.3em;"

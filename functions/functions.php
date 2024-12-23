@@ -4,12 +4,6 @@ function e($value)
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
-
-
-
-
-
-
 function redirect($url) //Redirect 
 {
     header("Location: $url");
@@ -25,7 +19,7 @@ function sanitizeData($val) //Sanitize and cast to string
 function validate($errors, $field)
 {
     if (isset($errors[$field]) && !empty($errors[$field])) {
-        return '<div class="alert alert-danger text-center fw-bold alert-dismissible fade show" role="alert">' .
+        return '<div class="alert alert-danger text-center fw-bold alert-dismissible fade show container border border-5 border-white" role="alert">' .
             htmlspecialchars($errors[$field], ENT_QUOTES) .
             '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' .
             '</div>';
@@ -84,7 +78,13 @@ function sanitizeAndValidate($val, $type = 'string')
 /* $isActive = sanitizeAndValidateData('active', 'boolean');*/
 
 
+function vdm ($a) {
 
+    echo "<pre>";
+        var_dump($a);
+        echo "</pre>";
+    
+};
 
 
 $firstName = sanitizeData('firstName');
